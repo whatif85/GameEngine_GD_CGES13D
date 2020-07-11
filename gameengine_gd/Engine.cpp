@@ -1,4 +1,4 @@
-#include "Engine.h"
+#include "include\Engine.h"
 
 
 Engine::Engine(){}
@@ -14,9 +14,12 @@ void Engine::Update()
 		// "close requested" event: we close the window
 		if (_event.type == sf::Event::Closed)
 		{
+			std::cout << "Closing now..." << std::endl;
 			window->close();
 		}
 	}
+
+	world->tick(10.0f); // milliseconds per tick
 }
 
 Engine& Engine::GetInstance()
@@ -36,4 +39,10 @@ void Engine::Start(sf::RenderWindow* win)
 	{
 		Update();
 	}
+}
+
+void Engine::AddSystem(ECS::EntitySystem* newSys)
+{
+	world->registerSystem(newSys);
+	world->enableSystem(newSys);
 }

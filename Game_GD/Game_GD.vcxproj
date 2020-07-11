@@ -21,13 +21,13 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{5d66894e-e41e-464a-bd62-0c85f50d4dfd}</ProjectGuid>
-    <RootNamespace>GameEngineGD</RootNamespace>
+    <ProjectGuid>{3ab924a7-5a08-4867-b0f9-d8fc74e93aec}</ProjectGuid>
+    <RootNamespace>GameGD</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -73,8 +73,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>..\Packages\SFML-2.5.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\Packages\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)$(ProjectName)\lib</OutDir>
+    <LibraryPath>..\Packages\SFML-2.5.1\lib;$(SolutionDir)GameEngine_GD\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -95,7 +94,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;GameEngine_GD.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -143,17 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AnimationSystem.cpp" />
-    <ClCompile Include="Engine.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="RenderingSystem.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="include\AnimationSystem.h" />
-    <ClInclude Include="include\Components.h" />
-    <ClInclude Include="include\ECS.h" />
-    <ClInclude Include="include\Engine.h" />
-    <ClInclude Include="include\RenderingSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
